@@ -5,6 +5,22 @@
     <title>Title</title>
 </head>
 <body>
-
+<a href="/books/new">Add New book</a>
+<div>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Year</th>
+            <th>Link</th>
+        </tr>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.getTitle()}"></td>
+            <td th:text="${book.getAuthor()}"></td>
+            <td th:text="${book.getProduct_year()}"></td>
+            <td><a th:href="@{/books/{id}(id=${book.getId()})}">More</a></td>
+        </tr>
+        <table>
+</div>
 </body>
 </html>
