@@ -17,6 +17,7 @@ public class PersonMapper implements RowMapper<Person> {
         person.setFio(resultSet.getString("fio"));
         person.setYearOfBirth(resultSet.getInt("year_of_birth"));
 
+
         return person;
     }
 }
