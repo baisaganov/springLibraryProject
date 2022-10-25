@@ -5,6 +5,18 @@
     <title>Index</title>
 </head>
 <body>
-
+    <a href="/people/new">Create new person</a>
+    <div>
+        <table>
+            <tr>
+                <th>FIO</th>
+                <th>Link</th>
+            </tr>
+            <tr th:each="person : ${people}">
+                <td th:text="${person.getFio()}"></td>
+                <td><a th:href="@{/people/{id}(id=${person.getId()})}">More</a></td>
+            </tr>
+        <table>
+    </div>
 </body>
 </html>

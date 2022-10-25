@@ -17,5 +17,8 @@
     <br/>
     <input type="submit" value="Изменить">
 </form>
+<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
+    <input type="submit" value="Удалить профиль!">
+</form>
 </body>
 </html>

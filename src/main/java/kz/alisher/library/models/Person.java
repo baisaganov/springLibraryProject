@@ -1,5 +1,7 @@
 package kz.alisher.library.models;
 
+import java.util.List;
+
 public class Person {
     private int id;
     private String fio;
