@@ -8,14 +8,20 @@
 <form th:method="PATCH" th:action="@{/books/{id}(id=${book.getId()})}" th:object="${book}">
     <label for="title">Title: </label>
     <input id="title" th:type="text" th:field="*{title}">
+    <div style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Error name</div>
     <br/>
     <label for="author">Author: </label>
     <input id="author" th:type="text" th:field="*{author}">
+    <div style="color: red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Error name</div>
     <br/>
-    <label for="product_year">Year: </label>
+    <label for="product_year">Year of release: </label>
     <input id="product_year" th:type="text" th:field="*{product_year}">
+    <div style="color: red" th:if="${#fields.hasErrors('product_year')}" th:errors="*{product_year}">Error name</div>
     <br/>
     <input type="submit" value="CHANGE">
+</form>
+<form th:method="DELETE" th:action="@{/books/{id}(id=${book.getId()})}">
+    <input type="submit" value="Удалить!">
 </form>
 </body>
 </html>

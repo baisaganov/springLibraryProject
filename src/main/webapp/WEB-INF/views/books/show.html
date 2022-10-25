@@ -7,10 +7,27 @@
 <body>
 <div th:text="'Title: '+ ${book.getTitle()}">Title</div>
 <div th:text="'Author: '+ ${book.getAuthor()}">Author</div>
-<div th:text="'Year: '+ ${book.getProduct_year()}">Year</div>
+<div th:text="'Year of release: '+ ${book.getProduct_year()}">Year</div>
+
+<div th:if="${not #lists.isEmpty(takenPerson)}">
+    <form th:method="DELETE" th:action="@{/books/{book_id}/{person_id}(book_id=${book.getId()}, person_id=${takenPerson.getId()})}">
+        <label th:text="'Taken by: ' + ${takenPerson.getFio()}">Taken by: </label>
+        <input type="submit" value="Redeem">
+    </form>
+</div>
+
+<div th:unless="${not #lists.isEmpty(takenPerson)}">
+    <form th:method="PATCH" th:action="@{/books/{id}/add(id=${book.getId()})}">
+        <label for="person">Choose a User:</label>
+        <select id="person" th:object="${person}" th:field="*{id}">
+            <option th:each="person : ${people}" th:value="${person.getId()}"
+                    th:text="${person.getFio()}"></option>
+        </select>
+        <input type="submit" value="Add"/>
+    </form>
+</div>
+
 <a th:href="@{/books/{id}/edit(id=${book.getId()})}">Edit book info</a>
 
-<form th:method="DELETE" th:action="@{/books/{id}(id=${book.getId()})}">
-    <input type="submit" value="Удалить!">
 </body>
 </html>

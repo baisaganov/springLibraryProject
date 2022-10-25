@@ -1,5 +1,6 @@
 package kz.alisher.library.dao;
 
+import kz.alisher.library.models.Book;
 import kz.alisher.library.models.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -30,6 +31,11 @@ public class PersonDAO {
                 new Object[]{id},
                 new PersonMapper()).stream().findAny().orElse(null);
     }
+    public Person show(String name) {
+        return jdbcTemplate.query("SELECT * FROM person WHERE fio=?",
+                new Object[]{name},
+                new PersonMapper()).stream().findAny().orElse(null);
+    }
 
     public void save(Person person) {
         jdbcTemplate.update("INSERT INTO person(fio, year_of_birth) VALUES (?,?)",
@@ -47,4 +53,24 @@ public class PersonDAO {
     public void delete(int id) {
         jdbcTemplate.update("DELETE FROM person WHERE person_id=?", id);
     }
+
+    public List<Book> getTakenBooks(int id) {
+        return jdbcTemplate.query("SELECT * from book WHERE person_id=?",
+                new Object[]{id},
+                new BookMapper());
+    }
+
+
+    public List<Book> getFreeBooks() {
+        return jdbcTemplate.query("SELECT * from book WHERE person_id IS NULL",
+                new BookMapper());
+    }
+
+
+    public void takeBook(int personId, int bookId) {
+        jdbcTemplate.update("UPDATE book SET person_id=? WHERE book_id=?",
+                personId,
+                bookId);
+    }
+
 }
