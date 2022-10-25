@@ -31,6 +31,11 @@ public class PersonDAO {
                 new Object[]{id},
                 new PersonMapper()).stream().findAny().orElse(null);
     }
+    public Person show(String name) {
+        return jdbcTemplate.query("SELECT * FROM person WHERE fio=?",
+                new Object[]{name},
+                new PersonMapper()).stream().findAny().orElse(null);
+    }
 
     public void save(Person person) {
         jdbcTemplate.update("INSERT INTO person(fio, year_of_birth) VALUES (?,?)",

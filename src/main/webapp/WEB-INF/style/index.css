@@ -1,0 +1,11 @@
+a{
+    color: green;
+}
+
+a:active{
+    color: black;
+}
+
+div {
+    background-color: black;
+}

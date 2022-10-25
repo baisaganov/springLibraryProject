@@ -6,7 +6,10 @@ import kz.alisher.library.models.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Component
 @RequestMapping("/books")
@@ -30,7 +33,10 @@ public class BookController {
         return "books/new";
     }
     @PostMapping()
-    public String saveBook(@ModelAttribute("book") Book book){
+    public String saveBook(@ModelAttribute("book") @Valid Book book, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            return "books/new";
+        }
         bookDAO.save(book);
         return "redirect:/books";
     }
@@ -51,7 +57,10 @@ public class BookController {
     }
 
     @PatchMapping("/{id}")
-    public String editing(@PathVariable("id") int id, @ModelAttribute("book") Book book){
+    public String editing(@PathVariable("id") int id, @ModelAttribute("book") @Valid Book book, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            return "books/edit";
+        }
         bookDAO.update(id, book);
         return "redirect:/books";
     }

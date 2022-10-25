@@ -1,10 +1,20 @@
 package kz.alisher.library.models;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 public class Person {
     private int id;
+
+    @NotEmpty(message = "Name should not be empty")
+    @Size(min=3, max=50, message = "Full name should be between 3 and 50 characters")
+//    @Pattern(regexp = "[A-Z]\\w+", message = "Full name should begin with a capital letter")
     private String fio;
+
+    @Min(value = 1900, message = "Birth year should be greater than 1900")
     private int yearOfBirth;
 
     public Person() {

@@ -2,23 +2,23 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Edit profile</title>
 </head>
 <body>
 
 <form th:method="PATCH" th:action="@{/people/{id}(id=${person.getId()})}" th:object="${person}">
-    <label for="fio">ФИО: </label>
+    <label for="fio">Full Name: </label>
     <input id="fio" th:type="text" th:field="*{fio}">
-<!--    <div style="color: red" th:if="${#fields.hasErrors('fio')}" th:errors="*{fio}">Error name</div>-->
+    <div style="color: red" th:if="${#fields.hasErrors('fio')}" th:errors="*{fio}">Error name</div>
     <br/>
-    <label for="yearOfBirth">Год Рождения: </label>
+    <label for="yearOfBirth">Year of birth: </label>
     <input id="yearOfBirth" th:type="text" th:field="*{yearOfBirth}">
-<!--    <div style="color: red" th:if="${#fields.hasErrors('yearOfBirth')}" th:errors="*{yearOfBirth}"></div>-->
+    <div style="color: red" th:if="${#fields.hasErrors('yearOfBirth')}" th:errors="*{yearOfBirth}"></div>
     <br/>
-    <input type="submit" value="Изменить">
+    <input type="submit" value="Change">
 </form>
 <form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
-    <input type="submit" value="Удалить профиль!">
+    <input type="submit" value="Delete profile">
 </form>
 </body>
 </html>

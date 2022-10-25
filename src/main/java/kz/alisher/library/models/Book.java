@@ -1,10 +1,17 @@
 package kz.alisher.library.models;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+
 public class Book {
     private int id;
     private int person_id;
+
+    @NotEmpty(message = "Title should not be empty")
     private String title;
+    @NotEmpty(message = "Author should not be empty")
     private String author;
+    @Min(value = 0,message = "Year of release should not be positive number")
     private int product_year;
 
     public Book() {

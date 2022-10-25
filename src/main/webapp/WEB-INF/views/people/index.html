@@ -7,16 +7,16 @@
 <body>
     <a href="/people/new">Create new person</a>
     <div>
-        <table>
-            <tr>
-                <th>FIO</th>
-                <th>Link</th>
+        <table style="border: 1px solid; width: 500px;" >
+            <tr style="border: 1px solid;" >
+                <th style="border: 1px solid;" >Full Name</th>
+                <th style="border: 1px solid;" >Link</th>
             </tr>
-            <tr th:each="person : ${people}">
-                <td th:text="${person.getFio()}"></td>
-                <td><a th:href="@{/people/{id}(id=${person.getId()})}">More</a></td>
+            <tr th:each="person : ${people}" style="border: 1px solid;" >
+                <td th:text="${person.getFio()}" style="border: 1px solid; text-align: center" ></td>
+                <td style="border: 1px solid; text-align: center"><a th:href="@{/people/{id}(id=${person.getId()})}">More</a></td>
             </tr>
-        <table>
+        </table>
     </div>
 </body>
 </html>

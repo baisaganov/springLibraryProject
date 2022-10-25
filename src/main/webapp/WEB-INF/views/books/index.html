@@ -5,22 +5,22 @@
     <title>Title</title>
 </head>
 <body>
-<a href="/books/new">Add New book</a>
+<a href="/books/new" style="margin-left: 200px; color: grey">Add New book</a>
 <div>
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Year</th>
-            <th>Link</th>
+    <table style="border: 1px solid; width: 500px;" >
+        <tr style="border: 1px solid;" >
+            <th style="border: 1px solid;" >Title</th>
+            <th style="border: 1px solid;" >Author</th>
+            <th style="border: 1px solid;" >Year</th>
+            <th style="border: 1px solid;" >Link</th>
         </tr>
         <tr th:each="book : ${books}">
-            <td th:text="${book.getTitle()}"></td>
-            <td th:text="${book.getAuthor()}"></td>
-            <td th:text="${book.getProduct_year()}"></td>
-            <td><a th:href="@{/books/{id}(id=${book.getId()})}">More</a></td>
+            <td th:text="${book.getTitle()}" style="border: 1px solid; text-align: center" ></td>
+            <td th:text="${book.getAuthor()}" style="border: 1px solid; text-align: center" ></td>
+            <td th:text="${book.getProduct_year()}" style="border: 1px solid; text-align: center" ></td>
+            <td style="border: 1px solid; text-align: center" ><a th:href="@{/books/{id}(id=${book.getId()})}">More</a></td>
         </tr>
-        <table>
+        </table>
 </div>
 </body>
 </html>

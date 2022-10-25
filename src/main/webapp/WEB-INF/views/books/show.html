@@ -7,7 +7,7 @@
 <body>
 <div th:text="'Title: '+ ${book.getTitle()}">Title</div>
 <div th:text="'Author: '+ ${book.getAuthor()}">Author</div>
-<div th:text="'Year: '+ ${book.getProduct_year()}">Year</div>
+<div th:text="'Year of release: '+ ${book.getProduct_year()}">Year</div>
 
 <div th:if="${not #lists.isEmpty(takenPerson)}">
     <form th:method="DELETE" th:action="@{/books/{book_id}/{person_id}(book_id=${book.getId()}, person_id=${takenPerson.getId()})}">

@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
   <meta charset="UTF-8">
   <title>Library</title>
+  <link th:href="@{style/index.css}" rel="stylesheet" />
 </head>
 <body>
-<div>Посетители: <a href="people/">Список посетителей!</a> </div>
-<div>Книги: <a href="books/">Посмотреть книги!</a> </div>
+<div style="margin-left: 40%;margin-top: 10%">Посетители: <a href="people/" style="color: grey">Список посетителей!</a>
+  <p>Книги: <a href="books/" style="color: grey">Посмотреть книги!</a></p>
+</div>
+
 </body>
 </html>
